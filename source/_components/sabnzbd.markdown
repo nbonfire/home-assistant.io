@@ -53,6 +53,11 @@ port:
   required: false
   default: 8080
   type: integer
+web_root:
+  description: The web root on which your SABnzbd is hosted. Useful behind a reverse proxy.
+  required: false
+  default: '/'
+  type: string
 sensors:
   description: List of variables for which to create sensor entities.
   required: false
@@ -87,6 +92,7 @@ sabnzbd:
   host: 192.168.1.32
   name: sab
   port: 9090
+  web_root: sabnzbd
   ssl: true
   sensors:
     - current_status
@@ -101,7 +107,7 @@ sabnzbd:
     - month_size
     - total_size
 ```
-This will attempt to access your SABnzbd instance at https://192.168.1.32:9090 and will create sensors named 
+This will attempt to access your SABnzbd instance at https://192.168.1.32:9090/sabnzbd and will create sensors named 
 `sensor.sab_status`, `sensor.sab_speed`, etc.
 
 ## {% linkable_title Services %}
